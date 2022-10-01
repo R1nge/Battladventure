@@ -15,7 +15,7 @@ public abstract class Character : MonoBehaviour
         _turnManager = FindObjectOfType<TurnManager>();
         _turnManager.OnTurnStarted += ApplyBuffs;
         _turnManager.OnTurnEnded += ApplyBuffs;
-        characterSo.stats.data.OnHealthChanged += UpdateUI;
+        characterSo.stats.Data.OnHealthChanged += UpdateUI;
     }
 
     private void Start() => spriteRenderer.sprite = characterSo.sprite;
@@ -62,6 +62,6 @@ public abstract class Character : MonoBehaviour
     {
         _turnManager.OnTurnStarted -= ApplyBuffs;
         _turnManager.OnTurnEnded -= ApplyBuffs;
-        characterSo.stats.data.OnHealthChanged -= UpdateUI;
+        characterSo.stats.Data.OnHealthChanged -= UpdateUI;
     }
 }

@@ -5,6 +5,6 @@ public class HealCard : BuffSO
 {
     protected override void Apply(Character character)
     {
-        character.characterSo.stats.data.Health += data.amount;
+        character.characterSo.stats.Data.Health += data.amount;
     }
 }
