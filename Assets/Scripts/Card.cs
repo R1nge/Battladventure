@@ -5,19 +5,15 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private CardSO cardSo;
     [SerializeField] private TextMeshProUGUI description;
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private BuffManager _buffManager;
 
-    private void Awake()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _buffManager = FindObjectOfType<BuffManager>();
-    }
+    private void Awake() => _buffManager = FindObjectOfType<BuffManager>();
 
     private void Start()
     {
         description.text = cardSo.description;
-        _spriteRenderer.sprite = cardSo.sprite;
+        spriteRenderer.sprite = cardSo.sprite;
     }
 
     private void OnMouseDown() => Use();

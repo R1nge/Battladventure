@@ -8,10 +8,10 @@ public class Stats : ScriptableObject
     public int attack;
     public int energy;
     public Data data;
-
+    
     private void OnEnable()
     {
-        data.health = health;
+        data.Health = health;
         data.attack = attack;
         data.energy = energy;
     }
@@ -20,7 +20,20 @@ public class Stats : ScriptableObject
 [Serializable]
 public class Data
 {
-    public int health;
+    public event Action<int> OnHealthChanged;
+
+    public int Health
+    {
+        get => _health;
+        set
+        {
+            _health = value;
+            OnHealthChanged?.Invoke(Health);
+        }
+    }
+    
+    private int _health;
+
     public int attack;
     public int energy;
 }

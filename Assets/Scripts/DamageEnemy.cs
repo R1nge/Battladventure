@@ -5,12 +5,6 @@ public class DamageEnemy : BuffSO
 {
     protected override void Apply(Character character)
     {
-        switch (apply)
-        {
-            case ApplyOn.Start:
-            case ApplyOn.End:
-                character.characterSo.stats.data.health -= data.amount;
-                break;
-        }
+        character.characterSo.stats.data.Health -= data.amount;
     }
 }

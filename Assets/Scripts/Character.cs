@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public new TextMeshProUGUI name;
+    public TextMeshProUGUI health;
     public CharacterSO characterSo;
     public List<BuffSO> buffs;
     private TurnManager _turnManager;
@@ -15,9 +15,12 @@ public abstract class Character : MonoBehaviour
         _turnManager = FindObjectOfType<TurnManager>();
         _turnManager.OnTurnStarted += ApplyBuffs;
         _turnManager.OnTurnEnded += ApplyBuffs;
+        characterSo.stats.data.OnHealthChanged += UpdateUI;
     }
 
     private void Start() => spriteRenderer.sprite = characterSo.sprite;
+
+    private void UpdateUI(int value) => health.text = value.ToString();
 
     private void ApplyBuffs()
     {
@@ -59,5 +62,6 @@ public abstract class Character : MonoBehaviour
     {
         _turnManager.OnTurnStarted -= ApplyBuffs;
         _turnManager.OnTurnEnded -= ApplyBuffs;
+        characterSo.stats.data.OnHealthChanged -= UpdateUI;
     }
 }

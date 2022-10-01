@@ -26,23 +26,32 @@ public abstract class BuffSO : ScriptableObject
 
     public void Execute(Character character)
     {
-        if (apply == ApplyOn.Click)
+        switch (apply)
         {
-            Apply(character);
-            return;
-        }
+            case ApplyOn.Start:
+            case ApplyOn.End:
+            {
+                if (apply == ApplyOn.Click)
+                {
+                    Apply(character);
+                    return;
+                }
 
-        if (data.duration <= 0) return;
+                if (data.duration <= 0) return;
 
-        if (target == Target.Both)
-        {
-            Apply(character);
-            data.duration -= 0.5f;
-        }
-        else
-        {
-            Apply(character);
-            data.duration -= 1f;
+                if (target == Target.Both)
+                {
+                    Apply(character);
+                    data.duration -= 0.5f;
+                }
+                else
+                {
+                    Apply(character);
+                    data.duration -= 1f;
+                }
+
+                break;
+            }
         }
     }
 
