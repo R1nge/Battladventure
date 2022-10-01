@@ -3,12 +3,11 @@
 [CreateAssetMenu(fileName = "Heal", menuName = "Buff/Heal")]
 public class HealCard : BuffSO
 {
-    //TODO: Separate duration from SO
     public override void Execute(Character character)
     {
         if (apply == ApplyOn.Click)
         {
-            character.character.stats.health += data.amount;
+            character.stats.stats.health += data.amount;
             return;
         }
 
@@ -32,7 +31,7 @@ public class HealCard : BuffSO
         {
             case ApplyOn.Start:
             case ApplyOn.End:
-                character.character.stats.health += data.amount;
+                character.stats.stats.health += data.amount;
                 break;
         }
     }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -7,7 +6,7 @@ public abstract class Character : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public new TextMeshProUGUI name;
-    public CharacterSO character;
+    public CharacterSO stats;
     public List<BuffSO> buffs;
     private TurnManager _turnManager;
 
@@ -17,6 +16,8 @@ public abstract class Character : MonoBehaviour
         _turnManager.OnTurnStarted += ApplyBuffs;
         _turnManager.OnTurnEnded += ApplyBuffs;
     }
+
+    private void Start() => spriteRenderer.sprite = stats.sprite;
 
     private void ApplyBuffs()
     {
@@ -43,11 +44,13 @@ public abstract class Character : MonoBehaviour
                     break;
                 }
             }
-            
+        }
+
+        for (int i = 0; i < buffs.Count; i++)
+        {
             if (buffs[i].data.duration <= 0)
             {
                 buffs.Remove(buffs[i]);
-                return;
             }
         }
     }
@@ -57,9 +60,4 @@ public abstract class Character : MonoBehaviour
         _turnManager.OnTurnStarted -= ApplyBuffs;
         _turnManager.OnTurnEnded -= ApplyBuffs;
     }
-    //Buffs (Type, duration, amountPerDuration,
-    //BuffGenericSo
-    //--Health Buff
-    //--Attack Buff
-    //--Poison Debuff
 }

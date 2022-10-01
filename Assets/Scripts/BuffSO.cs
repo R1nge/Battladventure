@@ -1,10 +1,7 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BuffSO : ScriptableObject
 {
-    public Sprite sprite;
-    public string description;
     public int amount;
     public float duration;
     public ApplyOn apply;

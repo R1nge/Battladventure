@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class BuffManager : MonoBehaviour
 {
-    [SerializeField] private List<BuffSO> buffs;
     private Player _player;
     private Enemy _enemy;
 
@@ -14,8 +11,6 @@ public class BuffManager : MonoBehaviour
         _player = FindObjectOfType<Player>();
         _enemy = FindObjectOfType<Enemy>();
     }
-
-    public BuffSO Pick() => buffs[Random.Range(0, buffs.Count)];
 
     public void Use(BuffSO buffSo)
     {

@@ -1,32 +1,35 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
+    [SerializeField] private CardSO cardSo;
     [SerializeField] private TextMeshProUGUI description;
     private SpriteRenderer _spriteRenderer;
     private BuffManager _buffManager;
-    private BuffSO _buffSo;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _buffManager = FindObjectOfType<BuffManager>();
-        _buffSo = _buffManager.Pick();
     }
 
     private void Start()
     {
-        description.text = _buffSo.description;
-        _spriteRenderer.sprite = _buffSo.sprite;
+        description.text = cardSo.description;
+        _spriteRenderer.sprite = cardSo.sprite;
     }
 
     private void OnMouseDown() => Use();
 
     private void Use()
     {
-        _buffManager.Use(_buffSo);
+        foreach (var buff in cardSo.buffSo)
+        {
+            _buffManager.Use(buff);
+        }
+
         Destroy(gameObject);
     }
 }
