@@ -24,7 +24,29 @@ public abstract class BuffSO : ScriptableObject
         Both
     }
 
-    public abstract void Execute(Character character);
+    public void Execute(Character character)
+    {
+        if (apply == ApplyOn.Click)
+        {
+            Apply(character);
+            return;
+        }
+
+        if (data.duration <= 0) return;
+
+        if (target == Target.Both)
+        {
+            Apply(character);
+            data.duration -= 0.5f;
+        }
+        else
+        {
+            Apply(character);
+            data.duration -= 1f;
+        }
+    }
+
+    protected abstract void Apply(Character character);
 
     public void Add(Character character) => character.buffs.Add(this);
 }
