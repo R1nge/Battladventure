@@ -44,7 +44,7 @@ public abstract class Character : MonoBehaviour
                 }
             }
             
-            if (buffs[i].duration <= 0)
+            if (buffs[i].data.duration <= 0)
             {
                 buffs.Remove(buffs[i]);
                 return;

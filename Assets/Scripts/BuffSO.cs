@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class BuffSO : ScriptableObject
 {
@@ -8,6 +9,9 @@ public abstract class BuffSO : ScriptableObject
     public float duration;
     public ApplyOn apply;
     public Target target;
+    public BuffData data;
+
+    protected void OnEnable() => data = new BuffData {amount = amount, duration = duration};
 
     public enum ApplyOn
     {
