@@ -6,7 +6,7 @@ public abstract class Character : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public new TextMeshProUGUI name;
-    public CharacterSO stats;
+    public CharacterSO characterSo;
     public List<BuffSO> buffs;
     private TurnManager _turnManager;
 
@@ -17,7 +17,7 @@ public abstract class Character : MonoBehaviour
         _turnManager.OnTurnEnded += ApplyBuffs;
     }
 
-    private void Start() => spriteRenderer.sprite = stats.sprite;
+    private void Start() => spriteRenderer.sprite = characterSo.sprite;
 
     private void ApplyBuffs()
     {

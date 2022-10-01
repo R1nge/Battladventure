@@ -7,7 +7,7 @@ public class HealCard : BuffSO
     {
         if (apply == ApplyOn.Click)
         {
-            character.stats.stats.health += data.amount;
+            character.characterSo.stats.data.health += data.amount;
             return;
         }
 
@@ -31,7 +31,7 @@ public class HealCard : BuffSO
         {
             case ApplyOn.Start:
             case ApplyOn.End:
-                character.stats.stats.health += data.amount;
+                character.characterSo.stats.data.health += data.amount;
                 break;
         }
     }

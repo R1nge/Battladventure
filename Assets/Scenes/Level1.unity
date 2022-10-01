@@ -439,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 333015525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 418720568}
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 333015526}
   name: {fileID: 0}
-  stats: {fileID: 11400000, guid: cf1bfc6145c2ad74cb79ad4d9f4f23c2, type: 2}
+  characterSo: {fileID: 11400000, guid: cf1bfc6145c2ad74cb79ad4d9f4f23c2, type: 2}
   buffs: []
 --- !u!4 &418720568
 Transform:
@@ -863,7 +863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1850983679}
   name: {fileID: 0}
-  stats: {fileID: 11400000, guid: 704653a998e88ee41a923005bbfd3734, type: 2}
+  characterSo: {fileID: 11400000, guid: 704653a998e88ee41a923005bbfd3734, type: 2}
   buffs: []
 --- !u!1 &1329176134
 GameObject:
@@ -1279,7 +1279,7 @@ Transform:
   m_GameObject: {fileID: 1850983678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1074472323}
