@@ -7,17 +7,10 @@ public class Stats : ScriptableObject
     public int health;
     public int attack;
     public int energy;
-    public Data Data = new Data();
-
-    private void OnEnable()
-    {
-        Data.Health = health;
-        Data.Attack = attack;
-        Data.Energy = energy;
-    }
 }
 
-public class Data
+[Serializable]
+public class StatsData
 {
     public event Action<int> OnHealthChanged;
     public event Action<int> OnAttackChanged;

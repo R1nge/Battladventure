@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public abstract class Character : MonoBehaviour
     public TextMeshProUGUI health;
     public CharacterSO characterSo;
     public List<BuffSO> buffs;
+    public List<BuffData> buffsData;
+    public StatsData stats;
     private TurnManager _turnManager;
 
     private void Awake()
@@ -15,53 +18,65 @@ public abstract class Character : MonoBehaviour
         _turnManager = FindObjectOfType<TurnManager>();
         _turnManager.OnTurnStarted += ApplyBuffs;
         _turnManager.OnTurnEnded += ApplyBuffs;
-        characterSo.stats.Data.OnHealthChanged += UpdateUI;
+        stats = new StatsData
+        {
+            Attack = characterSo.stats.attack,
+            Energy = characterSo.stats.energy,
+            Health = characterSo.stats.health
+        };
+        buffsData = new List<BuffData>();
+        stats.OnHealthChanged += UpdateUI;
     }
 
-    private void Start() => spriteRenderer.sprite = characterSo.sprite;
+    private void Start()
+    {
+        spriteRenderer.sprite = characterSo.sprite;
 
-    private void UpdateUI(int value) => health.text = value.ToString();
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            if (buffsData.Count < buffs.Count)
+            {
+                buffsData.Add(new BuffData
+                {
+                    duration = buffs[i].duration
+                });
+            }
+        }
+    }
 
     private void ApplyBuffs()
     {
         for (int i = 0; i < buffs.Count; i++)
         {
-            switch (_turnManager.currentState)
+            if (buffsData.Count < buffs.Count)
             {
-                case TurnManager.TurnState.Start:
+                buffsData.Add(new BuffData
                 {
-                    if (buffs[i].apply == BuffSO.ApplyOn.Start)
-                    {
-                        buffs[i].Execute(this);
-                    }
+                    duration = buffs[i].duration
+                });
+            }
 
-                    break;
-                }
-                case TurnManager.TurnState.End:
-                {
-                    if (buffs[i].apply == BuffSO.ApplyOn.End)
-                    {
-                        buffs[i].Execute(this);
-                    }
-
-                    break;
-                }
+            if (buffsData[i].duration > 0)
+            {
+                buffs[i].Apply(this, buffsData[i]);
             }
         }
 
-        for (int i = 0; i < buffs.Count; i++)
+        for (int i = 0; i < buffsData.Count; i++)
         {
-            if (buffs[i].data.duration <= 0)
+            if (buffsData[i].duration <= 0)
             {
-                buffs.Remove(buffs[i]);
+                buffsData.RemoveAt(i);
             }
         }
     }
+
+    private void UpdateUI(int value) => health.text = value.ToString();
 
     private void OnDestroy()
     {
         _turnManager.OnTurnStarted -= ApplyBuffs;
         _turnManager.OnTurnEnded -= ApplyBuffs;
-        characterSo.stats.Data.OnHealthChanged -= UpdateUI;
+        stats.OnHealthChanged -= UpdateUI;
     }
 }

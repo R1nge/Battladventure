@@ -1,61 +1,40 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class BuffSO : ScriptableObject
 {
     public int amount;
-    public float duration;
-    public ApplyOn apply;
-    public Target target;
-    public BuffData data;
+    public int duration;
+    public MyTarget target;
+    public ApplyState applyState;
 
-    protected void OnEnable() => data = new BuffData {amount = amount, duration = duration};
-
-    public enum ApplyOn
-    {
-        Start,
-        End,
-        Click
-    }
-
-    public enum Target
+    public enum MyTarget
     {
         Player,
         Enemy,
         Both
     }
 
-    public void Execute(Character character)
+    public enum ApplyState
     {
-        switch (apply)
-        {
-            case ApplyOn.Start:
-            case ApplyOn.End:
-            {
-                if (apply == ApplyOn.Click)
-                {
-                    Apply(character);
-                    return;
-                }
-
-                if (data.duration <= 0) return;
-
-                if (target == Target.Both)
-                {
-                    Apply(character);
-                    data.duration -= 0.5f;
-                }
-                else
-                {
-                    Apply(character);
-                    data.duration -= 1f;
-                }
-
-                break;
-            }
-        }
+        OnStart,
+        OnEnd
     }
 
-    protected abstract void Apply(Character character);
+    public void Apply(Character character, BuffData data)
+    {
+        Execute(character);
+        data.duration--;
+        Delete(character, data);
+    }
 
-    public void Add(Character character) => character.buffs.Add(this);
+    protected abstract void Execute(Character character);
+
+    private void Delete(Character character, BuffData data)
+    {
+        if (data.duration <= 0)
+        {
+            character.buffs.Remove(this);
+        }
+    }
 }

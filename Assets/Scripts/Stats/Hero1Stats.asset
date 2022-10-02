@@ -15,7 +15,3 @@ MonoBehaviour:
   health: 100
   attack: 0
   energy: 0
-  data:
-    health: 200
-    attack: 0
-    energy: 0
