@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -9,9 +8,9 @@ public abstract class Character : MonoBehaviour
     public TextMeshProUGUI health;
     public CharacterSO characterSo;
     public List<BuffSO> buffs;
-    public List<BuffData> buffsData;
     public StatsData stats;
     private TurnManager _turnManager;
+    private List<BuffData> _buffsData;
 
     private void Awake()
     {
@@ -24,7 +23,7 @@ public abstract class Character : MonoBehaviour
             Energy = characterSo.stats.energy,
             Health = characterSo.stats.health
         };
-        buffsData = new List<BuffData>();
+        _buffsData = new List<BuffData>();
         stats.OnHealthChanged += UpdateUI;
     }
 
@@ -34,9 +33,9 @@ public abstract class Character : MonoBehaviour
 
         for (int i = 0; i < buffs.Count; i++)
         {
-            if (buffsData.Count < buffs.Count)
+            if (_buffsData.Count < buffs.Count)
             {
-                buffsData.Add(new BuffData
+                _buffsData.Add(new BuffData
                 {
                     duration = buffs[i].duration
                 });
@@ -48,27 +47,28 @@ public abstract class Character : MonoBehaviour
     {
         for (int i = 0; i < buffs.Count; i++)
         {
-            if (buffsData.Count < buffs.Count)
+            if (_buffsData.Count < buffs.Count)
             {
-                buffsData.Add(new BuffData
+                _buffsData.Add(new BuffData
                 {
                     duration = buffs[i].duration
                 });
             }
-
-            if (buffsData[i].duration > 0)
+            else
             {
-                buffs[i].Apply(this, buffsData[i]);
+                if (buffs.Count <= 0)
+                {
+                    _buffsData.Clear();
+                }
             }
         }
-
-        for (int i = 0; i < buffsData.Count; i++)
+        
+        for (int i = buffs.Count - 1; i >= 0; i--)
         {
-            if (buffsData[i].duration <= 0)
-            {
-                buffsData.RemoveAt(i);
-            }
+            buffs[i].Apply(this, _buffsData[i]);
         }
+
+        _buffsData.RemoveAll(r => r.duration <= 0);
     }
 
     private void UpdateUI(int value) => health.text = value.ToString();

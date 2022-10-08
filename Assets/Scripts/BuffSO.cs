@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class BuffSO : ScriptableObject
 {
@@ -25,12 +24,12 @@ public abstract class BuffSO : ScriptableObject
     {
         Execute(character);
         data.duration--;
-        Delete(character, data);
+        Remove(character, data);
     }
 
     protected abstract void Execute(Character character);
 
-    private void Delete(Character character, BuffData data)
+    private void Remove(Character character, BuffData data)
     {
         if (data.duration <= 0)
         {

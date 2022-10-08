@@ -5,7 +5,6 @@ public class HealthBuff : BuffSO
 {
     protected override void Execute(Character character)
     {
-        Debug.Log("Heal");
         character.stats.Health += amount;
     }
 }
