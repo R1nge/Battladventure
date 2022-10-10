@@ -4,6 +4,9 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private Card[] cards;
     [SerializeField] private Transform[] positions;
+    private CardManagerUI _ui;
+
+    private void Awake() => _ui = GetComponent<CardManagerUI>();
 
     public void ShowCards()
     {
@@ -12,6 +15,8 @@ public class CardManager : MonoBehaviour
             var instance = Instantiate(cards[i].gameObject, positions[i].position, Quaternion.identity);
             instance.transform.parent = positions[i];
         }
+
+        _ui.BlockInput();
     }
 
     public void HideCards()
@@ -21,5 +26,7 @@ public class CardManager : MonoBehaviour
             if (positions[i].childCount == 0) continue;
             Destroy(positions[i].GetChild(0).gameObject);
         }
+
+        _ui.UnlockInput();
     }
 }
