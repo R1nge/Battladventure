@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 7356093217389108785, guid: f52d73c6107144a44a0c33ad5452d623, type: 3}
+  - {fileID: 8717771138942296553, guid: 9d48fc2080ffef741a279cae9f8fbc38, type: 3}
   - {fileID: 3995950197488701682, guid: 43ef5f38952aaeb4584dfc429997f11c, type: 3}
   - {fileID: 3995950197488701682, guid: 43ef5f38952aaeb4584dfc429997f11c, type: 3}
   positions:
@@ -875,7 +875,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1863099013
 Transform:
@@ -885,7 +885,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1863099012}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.21133333, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad4328feca74cc2b89e2aa3c4c4cdeb, type: 3}
-  m_Name: CharStats
+  m_Name: Enemy1
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
   attack: 10

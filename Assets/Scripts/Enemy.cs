@@ -24,7 +24,6 @@
     private void SpawnNextEnemy()
     {
         _spawner.SpawnNext();
-        print("Spawned next enemy");
         _cardManager.ShowCards();
         Destroy(gameObject);
     }
