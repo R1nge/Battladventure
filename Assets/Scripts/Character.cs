@@ -33,26 +33,17 @@ public abstract class Character : MonoBehaviour, IDamageable
         }
     }
 
-    public void Heal(int amount)
-    {
-        _health += amount;
-    }
+    public void Heal(int amount) => _health += amount;
 
-    protected void Attack(IDamageable target)
-    {
-        target.TakeDamage(_attack);
-    }
+    protected void Attack(IDamageable target) => target.TakeDamage(_attack);
 
     private void ApplyBuff()
     {
-        for (int i = 0; i < buffs.Count; i++)
+        for (int i = buffs.Count - 1; i >= 0; i--)
         {
             buffs[i].Apply(this);
         }
     }
 
-    private void OnDestroy()
-    {
-        turnManager.OnTurnStarted -= ApplyBuff;
-    }
+    private void OnDestroy() => turnManager.OnTurnStarted -= ApplyBuff;
 }

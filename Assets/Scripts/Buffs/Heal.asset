@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 815f1f966b9a4bff85285324244df1c1, type: 3}
-  m_Name: Buff
+  m_Name: Heal
   m_EditorClassIdentifier: 
   buff:
     duration: 5
