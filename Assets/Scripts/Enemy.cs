@@ -17,7 +17,7 @@
     {
         if (diceManager.Enemy > diceManager.Player)
         {
-            Attack(_player);
+            Hit(_player);
         }
     }
 

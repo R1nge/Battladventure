@@ -6,8 +6,8 @@ public abstract class Character : MonoBehaviour, IDamageable
 {
     [SerializeField] private CharacterStats stats;
     public List<Buff> buffs;
-    public int health { get; private set; }
-    public int attack { get; private set; }
+    public int Health { get; private set; }
+    public int Attack { get; private set; }
     protected TurnManager turnManager;
     protected DiceManager diceManager;
     public event Action OnCharacterDied;
@@ -24,14 +24,14 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     private void InitValues()
     {
-        health = stats.health;
-        attack = stats.attack;
+        Health = stats.health;
+        Attack = stats.attack;
     }
 
     public void TakeDamage(int amount)
     {
-        health -= amount;
-        if (health <= 0)
+        Health -= amount;
+        if (Health <= 0)
         {
             OnCharacterDied?.Invoke();
         }
@@ -39,9 +39,9 @@ public abstract class Character : MonoBehaviour, IDamageable
         _characterUI.UpdateUI();
     }
 
-    public void Heal(int amount) => health += amount;
+    public void Heal(int amount) => Health += amount;
 
-    protected void Attack(IDamageable target) => target.TakeDamage(attack);
+    protected void Hit(IDamageable target) => target.TakeDamage(Attack);
 
     private void ApplyBuff()
     {

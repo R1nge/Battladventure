@@ -13,7 +13,7 @@
     {
         if (diceManager.Player > diceManager.Enemy)
         {
-            Attack(_enemy);
+            Hit(_enemy);
             //TODO: Move enemy and player references to separate class
             _enemy = FindObjectOfType<Enemy>();
         }

@@ -18,7 +18,7 @@ public class CharacterUI : MonoBehaviour
 
     public void UpdateUI()
     {
-        attack.text = "Attack: " + _character.attack;
-        health.text = "Health: " + _character.health;
+        attack.text = "Attack: " + _character.Attack;
+        health.text = "Health: " + _character.Health;
     }
 }
