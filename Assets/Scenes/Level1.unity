@@ -587,7 +587,7 @@ GameObject:
   - component: {fileID: 1228866896}
   - component: {fileID: 1228866895}
   - component: {fileID: 1228866894}
-  - component: {fileID: 1228866893}
+  - component: {fileID: 1228866897}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -595,19 +595,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1228866893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228866892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60a8a3c3613a4ba3be5fda40efa22f86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buffSo: {fileID: 11400000, guid: 0bb7bb101b032e54d818b7aec618e54e, type: 2}
 --- !u!61 &1228866894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -701,6 +688,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1228866897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228866892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0a7b62ce7d4007a1a58961ab89e971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffSo: {fileID: 11400000, guid: 0bb7bb101b032e54d818b7aec618e54e, type: 2}
 --- !u!1 &1329176134
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,9 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5876540377166c14f819f3d5842367bc, type: 2}
-  buff:
-    duration: 0
-    amount: 0
+  buffs: []
 --- !u!1 &1767332743
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,15 +893,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767332743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c7669eacfe49a1ae556dc5da0799be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 5876540377166c14f819f3d5842367bc, type: 2}
-  buff:
-    duration: 0
-    amount: 0
+  buffs: []
 --- !u!212 &1767332745
 SpriteRenderer:
   m_ObjectHideFlags: 0

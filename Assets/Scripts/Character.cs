@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour, IDamageable
 {
     [SerializeField] private CharacterStats stats;
-    public Buff buff;
+    public List<Buff> buffs;
     private int _health;
     private int _attack;
     protected TurnManager turnManager;
@@ -44,7 +45,10 @@ public abstract class Character : MonoBehaviour, IDamageable
 
     private void ApplyBuff()
     {
-        buff.Apply(this);
+        for (int i = 0; i < buffs.Count; i++)
+        {
+            buffs[i].Apply(this);
+        }
     }
 
     private void OnDestroy()

@@ -8,10 +8,10 @@ public class Buff
 
     public virtual void Apply(Character character)
     {
-        amount--;
-        if (amount <= 0)
+        duration--;
+        if (duration <= 0)
         {
-            character.buff = null;
+            character.buffs.Remove(this);
         }
     }
 }
