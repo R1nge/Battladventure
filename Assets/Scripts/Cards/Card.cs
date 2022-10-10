@@ -6,6 +6,7 @@ public abstract class Card : MonoBehaviour
     public BuffSO buffSo;
     private Player _player;
     private Enemy _enemy;
+    private CardManager _cardManager;
 
     protected enum Target
     {
@@ -18,12 +19,17 @@ public abstract class Card : MonoBehaviour
     {
         _player = FindObjectOfType<Player>();
         _enemy = FindObjectOfType<Enemy>();
+        _cardManager = FindObjectOfType<CardManager>();
     }
 
-    private void OnMouseDown() => Use();
+    private void OnMouseDown()
+    {
+        Use();
+        _cardManager.HideCards();
+    }
 
     protected abstract void Use();
-    
+
     //TODO: REDO BOTH
     protected void Add(Buff buff, Buff buff2)
     {

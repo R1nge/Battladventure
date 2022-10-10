@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnNext()
     {
-//        Instantiate(enemies[_index].gameObject);
-        _index++;
+        Instantiate(enemies[_index].gameObject);
+        //_index++;
     }
 }

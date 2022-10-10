@@ -26,7 +26,7 @@
         _spawner.SpawnNext();
         print("Spawned next enemy");
         _cardManager.ShowCards();
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     protected override void OnDestroy()
