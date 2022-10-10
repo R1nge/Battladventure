@@ -9,8 +9,16 @@
         _player = FindObjectOfType<Player>();
         _spawner = FindObjectOfType<EnemySpawner>();
         _cardManager = FindObjectOfType<CardManager>();
-        turnManager.OnTurnStarted += delegate { Attack(_player); };
+        turnManager.OnTurnStarted += TryAttack;
         OnCharacterDied += SpawnNextEnemy;
+    }
+
+    private void TryAttack()
+    {
+        if (diceManager.Enemy > diceManager.Player)
+        {
+            Attack(_player);
+        }
     }
 
     private void SpawnNextEnemy()
@@ -18,6 +26,12 @@
         _spawner.SpawnNext();
         print("Spawned next enemy");
         _cardManager.ShowCards();
-        Destroy(gameObject);
+        //Destroy(gameObject);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        turnManager.OnTurnStarted -= TryAttack;
     }
 }

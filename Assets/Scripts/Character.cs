@@ -9,12 +9,14 @@ public abstract class Character : MonoBehaviour, IDamageable
     private int _health;
     private int _attack;
     protected TurnManager turnManager;
+    protected DiceManager diceManager;
     public event Action OnCharacterDied;
 
     private void Awake()
     {
         turnManager = FindObjectOfType<TurnManager>();
         turnManager.OnTurnStarted += ApplyBuff;
+        diceManager = FindObjectOfType<DiceManager>();
         InitValues();
     }
 
@@ -45,5 +47,5 @@ public abstract class Character : MonoBehaviour, IDamageable
         }
     }
 
-    private void OnDestroy() => turnManager.OnTurnStarted -= ApplyBuff;
+    protected virtual void OnDestroy() => turnManager.OnTurnStarted -= ApplyBuff;
 }
