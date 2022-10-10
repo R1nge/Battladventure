@@ -1,12 +1,21 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
+    [SerializeField] private Toggle auto;
     public event Action OnTurnStarted;
 
-    public void MakeTurn()
+    private void Start() => InvokeRepeating(nameof(Auto), 0, 1);
+
+    public void MakeTurn() => OnTurnStarted?.Invoke();
+
+    private void Auto()
     {
-        OnTurnStarted?.Invoke();
+        if (auto.isOn)
+        {
+            OnTurnStarted?.Invoke();
+        }
     }
 }
