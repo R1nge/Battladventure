@@ -17,6 +17,8 @@ public class CardManager : MonoBehaviour
         }
 
         _ui.BlockInput();
+        //TODO: TIME SCALE TO SEPARATE CLASS
+        Time.timeScale = 0;
     }
 
     public void HideCards()
@@ -28,5 +30,6 @@ public class CardManager : MonoBehaviour
         }
 
         _ui.UnlockInput();
+        Time.timeScale = 1;
     }
 }
