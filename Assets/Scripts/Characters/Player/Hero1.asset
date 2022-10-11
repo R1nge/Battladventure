@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   attack: 10
+  skin: {fileID: 11400000, guid: df0cee2bd2e23944894ebff5bc3615de, type: 2}

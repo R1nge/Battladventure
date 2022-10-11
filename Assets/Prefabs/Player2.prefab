@@ -467,8 +467,9 @@ GameObject:
   - component: {fileID: 8324429699743364626}
   - component: {fileID: 8324429699743364627}
   - component: {fileID: 8324429699743364844}
+  - component: {fileID: 2140861195244080114}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,7 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9452fe4a3748481eb1f19fef0ca31702, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 5876540377166c14f819f3d5842367bc, type: 2}
+  stats: {fileID: 11400000, guid: 3535778817f9473498bb6fd07620853b, type: 2}
   buffs: []
 --- !u!114 &8324429699743364844
 MonoBehaviour:
@@ -517,7 +518,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0490ad399b0648b6bb4abc3582aaef1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 258253964234461458}
-  sprite: {fileID: -19545251, guid: 92dab60fdc49ab14693a75656cb5c884, type: 3}
   attack: {fileID: 1486247037361261666}
   health: {fileID: 7492221583681744077}
+--- !u!114 &2140861195244080114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8324429699743364624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8bdf384982420288c28ea41b9d3c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 3535778817f9473498bb6fd07620853b, type: 2}
+  spriteRenderer: {fileID: 258253964234461458}

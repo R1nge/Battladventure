@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 2502635047258156981}
   - component: {fileID: 2502635047258156983}
   - component: {fileID: 2502635047258156980}
+  - component: {fileID: 5954000262687529664}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,10 +62,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0490ad399b0648b6bb4abc3582aaef1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2900218863892898557}
-  sprite: {fileID: 1338615607, guid: 92dab60fdc49ab14693a75656cb5c884, type: 3}
   attack: {fileID: 6535639334792407548}
   health: {fileID: 3538354732740040358}
+--- !u!114 &5954000262687529664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2502635047258156984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8bdf384982420288c28ea41b9d3c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skin: {fileID: 11400000, guid: 01cdd34f8f39cb943b147e1f0d2da4ca, type: 2}
+  spriteRenderer: {fileID: 2900218863892898557}
 --- !u!1 &5366231886160919691
 GameObject:
   m_ObjectHideFlags: 0
