@@ -1,13 +1,12 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TurnManager : MonoBehaviour
 {
-    [SerializeField] private Toggle auto;
-    [SerializeField] private Button turn;
-
+    private TurnManagerUI _ui;
     public event Action OnTurnStarted;
+
+    private void Awake() => _ui = GetComponent<TurnManagerUI>();
 
     private void Start() => InvokeRepeating(nameof(Auto), 0, 1);
 
@@ -15,14 +14,9 @@ public class TurnManager : MonoBehaviour
 
     private void Auto()
     {
-        if (auto.isOn)
+        if (_ui.IsAuto())
         {
-            OnTurnStarted?.Invoke();
-            turn.interactable = false;
-        }
-        else
-        {
-            turn.interactable = true;
+            MakeTurn();
         }
     }
 }
