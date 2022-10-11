@@ -1,28 +1,22 @@
 ﻿using System;
 using UnityEngine;
 
-//Singleton
 public class TurnManager : MonoBehaviour
 {
-    public event Action OnTurnStarted, OnTurnEnded;
-    public TurnState currentState;
+    private TurnManagerUI _ui;
+    public event Action OnTurnStarted;
 
-    public enum TurnState
-    {
-        Start,
-        InProgress,
-        End
-    }
+    private void Awake() => _ui = GetComponent<TurnManagerUI>();
 
-    public void StartTurn()
-    {
-        currentState = TurnState.Start;
-        OnTurnStarted?.Invoke();
-    }
+    private void Start() => InvokeRepeating(nameof(Auto), 0, 1);
 
-    public void EndTurn()
+    public void MakeTurn() => OnTurnStarted?.Invoke();
+
+    private void Auto()
     {
-        currentState = TurnState.End;
-        OnTurnEnded?.Invoke();
+        if (_ui.IsAuto())
+        {
+            MakeTurn();
+        }
     }
 }
