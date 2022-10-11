@@ -28,6 +28,8 @@ public abstract class Character : MonoBehaviour, IDamageable
         Attack = stats.attack;
     }
 
+    public CharacterStats GetStats() => stats;
+
     public void TakeDamage(int amount)
     {
         Health -= amount;

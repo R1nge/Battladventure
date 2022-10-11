@@ -2,8 +2,12 @@
 
 public class CharacterSkinUI : MonoBehaviour
 {
-    [SerializeField] private CharacterStats skin;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    private Character _character;
 
-    private void Awake() => spriteRenderer.sprite = skin.skin.skin;
+    private void Awake()
+    {
+        _character = GetComponent<Character>();
+        spriteRenderer.sprite = _character.GetStats().skin.skin;
+    }
 }
